@@ -64,6 +64,85 @@ The project is not yet finalized and focuses on real-time robotic grasping, huma
 
 ---
 
+### Step 0: Packages Installations
+
+To build the environment from scratch using Docker, i use the following Dockerfile configuration. This installs ROS 2 Jazzy, MuJoCo 3.1.2, and applies the necessary compatibility patches for the MIA Hand packages.
+
+```bash
+FROM osrf/ros:jazzy-desktop
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    python3-colcon-common-extensions \
+    git \
+    wget \
+    libglfw3-dev \
+    libxext6 \
+    libxrender1 \
+    libxtst6 \
+    libgl1-mesa-dev \
+    libserial-dev \
+    pkg-config \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install ROS2 Control and MuJoCo bridge dependencies
+RUN apt-get update && apt-get install -y \
+    ros-jazzy-ros2-control \
+    ros-jazzy-ros2-controllers \
+    ros-jazzy-joint-state-publisher-gui \
+    ros-jazzy-angles \
+    ros-jazzy-controller-manager \
+    ros-jazzy-transmission-interface \
+    ros-jazzy-control-toolbox \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install MuJoCo 3.1.2
+WORKDIR /opt
+RUN wget https://github.com/google-deepmind/mujoco/releases/download/3.1.2/mujoco-3.1.2-linux-x86_64.tar.gz \
+    && tar -xvzf mujoco-3.1.2-linux-x86_64.tar.gz \
+    && rm mujoco-3.1.2-linux-x86_64.tar.gz
+
+# Set MuJoCo environment variables
+ENV MUJOCO_DIR=/opt/mujoco-3.1.2
+ENV LD_LIBRARY_PATH=/opt/mujoco-3.1.2/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+# Create Workspace
+WORKDIR /ros2_ws/src
+
+# Clone the MIA Hand Repo and the MuJoCo Bridge
+RUN git clone https://bitbucket.org/prensilia-ros/mia_hand_ros2_pkgs.git
+RUN git clone https://github.com/moveit/mujoco_ros2_control.git
+
+# THE JAZZY COMPATIBILITY PATCHES 
+
+# 1. Fix MIA Hand Code (Update deprecated HardwareComponentInterfaceParams to HardwareInfo)
+RUN sed -i 's/HardwareComponentInterfaceParams/HardwareInfo/g' \
+    /ros2_ws/src/mia_hand_ros2_pkgs/mia_hand_mujoco/include/mia_hand_mujoco/system_interface.hpp \
+    /ros2_ws/src/mia_hand_ros2_pkgs/mia_hand_mujoco/src/mia_hand_mujoco/system_interface.cpp && \
+    sed -i 's/params.hardware_info/params/g' \
+    /ros2_ws/src/mia_hand_ros2_pkgs/mia_hand_mujoco/src/mia_hand_mujoco/system_interface.cpp
+
+# 2. Fix MuJoCo Bridge (Remove 'load_urdf' which is gone in Jazzy and fix ResourceManager init)
+RUN sed -i '/resource_manager->load_urdf/d' \
+    /ros2_ws/src/mujoco_ros2_control/mujoco_ros2_control/src/mujoco_ros2_control.cpp && \
+    sed -i 's/hardware.hardware_class_type/hardware.type/g' \
+    /ros2_ws/src/mujoco_ros2_control/mujoco_ros2_control/src/mujoco_ros2_control.cpp && \
+    sed -i 's/std::make_unique<hardware_interface::ResourceManager>()/std::make_unique<hardware_interface::ResourceManager>(rclcpp::Clock::SharedPtr(new rclcpp::Clock()), rclcpp::get_logger("mujoco_ros2_control"))/g' \
+    /ros2_ws/src/mujoco_ros2_control/mujoco_ros2_control/src/mujoco_ros2_control.cpp
+
+# Build the workspace
+WORKDIR /ros2_ws
+RUN . /opt/ros/jazzy/setup.sh && colcon build --symlink-install
+
+# Source the workspace automatically
+RUN echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc \
+    && echo "source /ros2_ws/install/setup.bash" >> ~/.bashrc
+
+CMD ["bash"]
+```
+
+---
+
 ### Step 1: Clone MIA Hand ROS 2 Repository
 
 ```bash
