@@ -64,7 +64,17 @@ The project is not yet finalized and focuses on real-time robotic grasping, huma
 
 ---
 
-### Step 1: Build the Docker Image
+### Step 1: Open WSL Ubuntu
+
+Install the Ubuntu terminal on Windows and Run on a PowerShell Terminal:
+
+```bash
+ubuntu
+```
+
+---
+
+### Step 2: Build the Docker Image
 
 ### Dockerfile:
 
@@ -153,7 +163,7 @@ docker build -t mia_hand_image .
 
 ---
 
-### Step 2: USB Setup (WSL Integration)
+### Step 3: USB Setup (WSL Integration)
 
 Connect device:
 - Plug MIA Hand USB cable into PC
@@ -164,16 +174,6 @@ PowerShell (Admin):
 ```bash
 usbipd list
 usbipd attach --wsl --busid 1-3
-```
-
----
-
-### Step 3: Open WSL Ubuntu
-
-Install the Ubuntu terminal on Windows and Run on a PowerShell Terminal:
-
-```bash
-ubuntu
 ```
 
 ---
