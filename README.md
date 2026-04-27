@@ -166,7 +166,14 @@ docker build -t mia_hand_image .
 ### Step 3: Create the Docker Container (in Ubuntu)
 
 ```bash
-docker create -it --name mia_hand_real mia_hand_image
+docker create -it \
+    --name mia_hand_real \
+    --privileged \
+    --net=host \
+    -e DISPLAY=host.docker.internal:0.0 \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -v /dev:/dev \
+    mia_hand_image
 ```
 
 ---
