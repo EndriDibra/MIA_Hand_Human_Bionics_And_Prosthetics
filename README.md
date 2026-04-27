@@ -64,7 +64,7 @@ The project is not yet finalized and focuses on real-time robotic grasping, huma
 
 ---
 
-### Step 1: Open WSL Ubuntu
+### Step 1: Open WSL Ubuntu (in PowerShell)
 
 Install the Ubuntu terminal on Windows and Run on a PowerShell Terminal:
 
@@ -74,7 +74,7 @@ ubuntu
 
 ---
 
-### Step 2: Build the Docker Image Inside Ubuntu
+### Step 2: Build the Docker Image (in Ubuntu)
 
 ### Dockerfile:
 
@@ -163,7 +163,7 @@ docker build -t mia_hand_image .
 
 ---
 
-### Step 3: Create the Docker Container
+### Step 3: Create the Docker Container (in Ubuntu)
 
 ```bash
 docker create -it --name mia_hand_real mia_hand_image
@@ -171,7 +171,7 @@ docker create -it --name mia_hand_real mia_hand_image
 
 ---
 
-### Step 4: USB Setup (WSL Integration)
+### Step 4: USB Setup - WSL Integration (in PoweShell Admin)
 
 Connect device:
 - Plug MIA Hand USB cable into PC
@@ -186,7 +186,7 @@ usbipd attach --wsl --busid 1-3
 
 ---
 
-### Step 5: Start the Docker Container
+### Step 5: Start the Docker Container (in Ubuntu)
 
 Check containers:
 
@@ -208,7 +208,7 @@ docker exec -it mia_hand_real bash
 
 ---
 
-### Step 6: USB Verification
+### Step 6: USB Verification (in Docker Container)
 
 ```bash
 cat /sys/bus/usb-serial/devices/ttyUSB0/latency_timer
@@ -222,7 +222,7 @@ sudo sh -c 'echo 1 > /sys/bus/usb-serial/devices/ttyUSB0/latency_timer'
 
 ---
 
-### Step 7: Mujoco Simulation Mode
+### Step 7: Mujoco Simulation Mode (in Docker Container)
 
 XLaunch configuration:
 - Multiple windows
@@ -251,7 +251,7 @@ python3 mia_hand_grasp_control_simulation.py
 
 ---
 
-### Step 8: Physical MIA Hand Execution
+### Step 8: Physical MIA Hand Execution (in Docker Container)
 
 **Terminal 1:**
 
@@ -272,7 +272,7 @@ python3 mia_hand_grasp_control_physical.py
 
 ---
 
-### Step 9: VS Code (Inside Docker)
+### Step 9: VS Code (in Docker Container)
 
 ```bash
 code mia_hand_grasp_control_physical.py
