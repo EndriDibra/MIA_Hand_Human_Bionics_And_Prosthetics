@@ -64,7 +64,9 @@ The project is not yet finalized and focuses on real-time robotic grasping, huma
 
 ---
 
-### Step 0: Packages Installations
+### Step 1: Build the Docker Image
+
+### Dockerfile:
 
 To build the environment from scratch using Docker, i use the following Dockerfile configuration. This installs ROS 2 Jazzy, MuJoCo 3.1.2, and applies the necessary compatibility patches for the MIA Hand packages.
 
@@ -143,20 +145,10 @@ CMD ["bash"]
 
 ---
 
-### Step 1: Clone MIA Hand ROS 2 Repository
+### Build Image:
 
 ```bash
-git clone https://bitbucket.org/prensilia-ros/mia_hand_ros2_pkgs.git
-```
-
-ROS 2 workspace setup:
-
-```bash
-cd ~/ros2_ws/src
-git clone https://bitbucket.org/prensilia-ros/mia_hand_ros2_pkgs.git
-cd ..
-colcon build
-source install/setup.bash
+docker build -t mia_hand_image .
 ```
 
 ---
@@ -178,7 +170,7 @@ usbipd attach --wsl --busid 1-3
 
 ### Step 3: Open WSL Ubuntu
 
-Install the Ubuntu terminal on Windows
+Install the Ubuntu terminal on Windows and Run on a PowerShell Terminal:
 
 ```bash
 ubuntu
