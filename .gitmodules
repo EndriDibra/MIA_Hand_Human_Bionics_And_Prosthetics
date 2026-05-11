@@ -1,3 +1,0 @@
-[submodule "example/src/mia_hand_ros2_pkgs"]
-	path = example/src/mia_hand_ros2_pkgs
-	url = https://bitbucket.org/prensilia-ros/mia_hand_ros2_pkgs.git
