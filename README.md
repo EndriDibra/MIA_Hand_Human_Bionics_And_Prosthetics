@@ -308,6 +308,18 @@ XLaunch configuration:
 
 **Terminal 1:**
 
+Check the ip4 address of the devise (host, in Windows):
+
+```bash
+ipconfig
+```
+
+In Ubuntu, the command is:
+
+```bash
+ifconfig
+```
+
 Run the MuJoCo MIA Hand simulation:
 
 ```bash
