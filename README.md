@@ -9,7 +9,7 @@ This is an **ongoing research and development project** involving the **Prensili
 
 The project is not yet finalized and focuses on real-time robotic grasping, human-machine interaction, and explainable AI integration.
 
-<h2 align="center">MIA Hand</h2>
+<h2 align="center">Prensilia  MIA Hand</h2>
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/8ae28d1e-3fe1-4203-b6c6-202ed537e6b1" width="350" title="MIA Hand">
