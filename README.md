@@ -17,6 +17,12 @@ The project is not yet finalized and focuses on real-time robotic grasping, huma
 
 ---
 
+<h2 align="center">MindRove EMG Data</h2>
+
+<img width="959" height="503" alt="EMG_Data" src="https://github.com/user-attachments/assets/449a70a4-7f0f-43e9-8328-6335b916b6b9" />
+
+---
+
 <h2 align="center">MIA Hand MuJoCo Simulation</h2>
 
 https://github.com/user-attachments/assets/cf530741-d14d-4f3f-a56a-b2b21c569f8f
