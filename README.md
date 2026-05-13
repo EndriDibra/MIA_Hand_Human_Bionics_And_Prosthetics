@@ -204,7 +204,7 @@ docker create -it \
 ### Step 4: Run the Docker Container (in Ubuntu)
 
 ```bash
-docker run -it -p 5000:5000 --name mia_hand_real_connected mia_hand_real bash
+docker run -it -p 5000:5000 --name mia_hand_real mia_hand_image bash
 ```
 
 ---
