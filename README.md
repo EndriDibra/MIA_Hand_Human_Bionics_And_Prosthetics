@@ -29,6 +29,12 @@ https://github.com/user-attachments/assets/cf530741-d14d-4f3f-a56a-b2b21c569f8f
 
 ---
 
+<h2 align="center">MIA Hand EMG Control MuJoCo Simulation</h2>
+
+https://github.com/user-attachments/assets/219e9298-0da8-4f9e-9323-c59ad1b8cabf
+
+---
+
 ## Project Goals
 
 ### Core Objectives
