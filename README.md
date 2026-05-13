@@ -392,49 +392,132 @@ This allows direct editing of ROS2 scripts, inside the container, in VS Code env
   - `numpy`
   - `mindrove` (MindRove SDK)
 
-### Step 1: Install the MindRove package to control the EMG device (VS CODE, in Windows)
+### Step 1: Clone the Naviflame GitHub Repository (VS CODE, in Windows)
 
-Run the fllowing command to install the package:
+Run the fllowing command to clone the repository:
 
 ```bash
-pip install mindrove
+git clone https://github.com/MindRove/NaviFlame.git
 ```
 ---
 
-### Step 2: Install the MindRove package to control the EMG device (VS CODE, in Windows)
+### Step 2: Install the required packages to control the EMG device with NaviFlame AI (VS Code, in Windows)
 
-Run the fllowing command to install the package:
+Run the following command to install the packages:
 
 ```bash
-pip install mindrove
+pip install mindrove tensorflow keras scikit-learn opencv-python numpy
 ```
 ---
 
-### Step 3: Install the MindRove package to control the EMG device (VS CODE, in Windows)
+### Step 3: Ensure the MindRove device is properly placed on the Hand and connected to WiFi 2
 
-Run the fllowing command to install the package:
+**Check the ReadMe file of NaviFlame for more information:**
 
-```bash
-pip install mindrove
-```
+https://github.com/MindRove/NaviFlame/blob/main/README.md
+
 ---
 
-### Step 4: Install the MindRove package to control the EMG device (VS CODE, in Windows)
+### Step 4: Record the Gestures
 
-Run the fllowing command to install the package:
+**To Record the hand gestures do the following:** 
+
+Run the example.py script with the record flag set to True in config.json to capture gestures:
 
 ```bash
-pip install mindrove
+python example.py
 ```
+
 ---
 
-### Step 5: Install the MindRove package to control the EMG device (VS CODE, in Windows)
+### Step 5: Fine-Tune MLP model
 
-Run the fllowing command to install the package:
+**To fine-tune the MLP model with the specific recorded gesture data do the following:**
+
+Set fine_tune to True in config.json and run example.py. After recording gestures, the script will fine-tune the MLP model:
 
 ```bash
-pip install mindrove
+python example.py
 ```
+
+---
+
+### Step 6: Real-Time Inference
+
+**To check if the MLP model (NaviFlame AI) is reading and responding to the gestures properly, do the following:**
+
+Ensure recorded data exists and the model is fine-tuned. Run the inference example to perform real-time inference:
+
+```bash
+python inference_example.py
+```
+
+---
+
+### Step 7: Setup the Network Communication between MindRove Device and MIA Hand
+
+At utils.py file, change the send_output_to_socket function to this format:
+
+```bash
+def send_output_to_socket(stop_event, output_queue):
+    
+    # Setting the connection parameters
+    host = 'localhost'
+    port = 5000
+
+    while not stop_event.is_set(): 
+    
+        try:
+    
+            # Creating the socket and connecting to the Docker-mapped port
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    
+                s.settimeout(5)  
+                s.connect((host, port))
+                
+                print(f"Connected to MIA Hand Receiver on {port}")
+
+                while not stop_event.is_set():
+    
+                    try:
+    
+                        # Getting the gesture ID from the AI queue
+                        gesture_id = output_queue.get(timeout=1)
+    
+                        # Sending the ID as a string (e.g., "3")
+                        s.sendall(str(gesture_id).encode('utf-8'))
+    
+                    except Empty:
+    
+                        continue  
+    
+                    except (BrokenPipeError, ConnectionResetError):
+    
+                        print("Connection lost. Reconnecting...")
+    
+                        break  
+
+        except (ConnectionRefusedError, socket.timeout):
+    
+            print("MIA Receiver not ready. Retrying in 5 seconds...")
+    
+            time.sleep(5)
+            
+    print("Socket thread stopped.")
+```
+
+---
+
+### Step 8: Final Stage
+
+Finally, to start and run the implementation, do the following:
+
+- Run the MIA Hand Driver (`ros2 launch mia_hand_driver mia_hand_driver_launch.py serial_port:=/dev/ttyUSB0`)
+- Run the MIA Hand ROS2 node (`mia_hand_full_physical.py`)
+- Run the inference script (`inference_example.py`)
+- Perform EMG gestures with the MindRove Armband
+- Now MIA Hand moves according to the EMG gestures
+
 ---
 
 ## Experimental Research Focus
@@ -477,3 +560,5 @@ This project explores a **human-AI hybrid robotic grasping system**, combining:
 - Explainable AI for transparency  
 
 The goal is to determine the optimal balance between **human control and autonomous intelligence** in prosthetic robotic manipulation systems.
+
+---
