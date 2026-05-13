@@ -33,8 +33,8 @@ https://github.com/user-attachments/assets/cf530741-d14d-4f3f-a56a-b2b21c569f8f
 
 https://github.com/user-attachments/assets/219e9298-0da8-4f9e-9323-c59ad1b8cabf
 
-**On the left video, i am controling the MIA Hand using the MindRove EMG device, shown how it looks like on the right video for educational purposes**
-**The movements on the right video, do not correspond to the gestures on the left video. The right video it is used to present the MindRove EMG device**
+- **On the left video, i am controling the MIA Hand using the MindRove EMG device, shown how it looks like on the right video for educational purposes**
+- **The movements on the right video, do not correspond to the gestures on the left video. The right video it is used to present the MindRove EMG device**
 
 ---
 
