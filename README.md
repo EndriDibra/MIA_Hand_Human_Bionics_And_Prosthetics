@@ -5,7 +5,7 @@
 
 ## Project Status
 
-This is an **ongoing research and development project** involving the **Prensilia MIA Hand robotic system**, integrated with ROS 2, Docker, EMG control, Wrist motor control and AI-based vision assistance.
+This is an **ongoing research and development project** involving the **Prensilia MIA Hand robotic system**, integrated with ROS 2, Docker, EMG control, Wrist motor control (Dynamixel) and AI-based vision assistance.
 
 The project is not yet finalized and focuses on real-time robotic grasping, human-machine interaction, and explainable AI integration.
 
@@ -46,7 +46,7 @@ https://github.com/user-attachments/assets/cf530741-d14d-4f3f-a56a-b2b21c569f8f
 ### AI & Robotics Objectives
 - Integrate AI vision for grasp decision support
 - Compare:
-  - Lightweight vs heavy vision models
+  - Lightweight vs heavy Vision models
   - Local vs cloud Vision models
 - Enable dynamic grasp aperture adjustment
 
@@ -189,7 +189,10 @@ docker build -t mia_hand_image .
 docker create -it \
     --name mia_hand_real \
     --privileged \
+    --device=/dev/ttyUSB0:/dev/ttyUSB0 \
+    --device=/dev/ttyUSB1:/dev/ttyUSB1 \
     --net=host \
+    -p 5000:5000 \
     -e DISPLAY=host.docker.internal:0.0 \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -v /dev:/dev \
@@ -198,22 +201,41 @@ docker create -it \
 
 ---
 
-### Step 4: USB Setup - WSL Integration (in PoweShell Admin)
-
-Connect device:
-- Plug MIA Hand USB cable into PC
-- Set latency timer = 1 in Windows Device Manager
-
-PowerShell (Admin):
+### Step 4: Run the Docker Container (in Ubuntu)
 
 ```bash
-usbipd list
-usbipd attach --wsl --busid 1-3
+docker run -it -p 5000:5000 --name mia_hand_real_connected mia_hand_real bash
 ```
 
 ---
 
-### Step 5: Start the Docker Container (in Ubuntu)
+### Step 5: USB Setup - WSL Integration (in PoweShell Admin)
+
+Connect device:
+- Plug MIA Hand and Wrist Motor USB cable into PC
+- Set latency timer = 1 in Windows Device Manager
+
+Check the list of the USB ports:
+
+```bash
+usbipd list
+```
+
+Bind the MIA Hand and Wrist motor USB ports:
+
+```bash
+usbipd bind --busid <BUSID1> <BUSID2>
+```
+
+Attach the MIA Hand and Wrist motor USB ports to WSL2 environment:
+
+```bash
+usbipd attach --wsl --busid <BUSID1> <BUSID2>
+```
+
+---
+
+### Step 6: Start the Docker Container (in Ubuntu)
 
 Check containers:
 
@@ -235,21 +257,48 @@ docker exec -it mia_hand_real bash
 
 ---
 
-### Step 6: USB Verification (in Docker Container)
+### Step 7: USBs Setup (in Docker Container)
+
+Check the available USB ports:
+
+```bash
+ls /dev/ttyUSB*
+```
+
+Grant Read/Write permissions to USB ports:
+
+```bash
+sudo chmod 666 /dev/ttyUSB0
+
+sudo chmod 666 /dev/ttyUSB1
+```
+
+Inject the USB ports manually (Optional, in Ubuntu):
+
+```bash
+sudo docker exec -u 0 mia_hand_real mknod -m 666 /dev/ttyUSB0 c 188 0
+sudo docker exec -u 0 mia_hand_real mknod -m 666 /dev/ttyUSB1 c 188 1
+```
+
+Check the latency timer of the USB ports:
 
 ```bash
 cat /sys/bus/usb-serial/devices/ttyUSB0/latency_timer
+
+cat /sys/bus/usb-serial/devices/ttyUSB1/latency_timer
 ```
 
-If not `1`, fix it:
+If their latency timer is not `1`, then to fix it, do:
 
 ```bash
 sudo sh -c 'echo 1 > /sys/bus/usb-serial/devices/ttyUSB0/latency_timer'
+
+sudo sh -c 'echo 1 > /sys/bus/usb-serial/devices/ttyUSB1/latency_timer'
 ```
 
 ---
 
-### Step 7: Mujoco Simulation Mode (in Docker Container)
+### Step 8: Mujoco Simulation Mode (in Docker Container)
 
 XLaunch configuration:
 - Multiple windows
@@ -278,7 +327,7 @@ python3 mia_hand_grasp_control_simulation.py
 
 ---
 
-### Step 8: Physical MIA Hand Execution (in Docker Container)
+### Step 9: Physical MIA Hand Execution (in Docker Container)
 
 **Terminal 1:**
 
@@ -299,7 +348,7 @@ python3 mia_hand_grasp_control_physical.py
 
 ---
 
-### Step 9: VS Code (in Docker Container)
+### Step 10: VS Code (in Docker Container)
 
 ```bash
 code mia_hand_grasp_control_physical.py
