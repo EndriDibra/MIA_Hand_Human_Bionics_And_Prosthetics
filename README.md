@@ -298,7 +298,7 @@ sudo sh -c 'echo 1 > /sys/bus/usb-serial/devices/ttyUSB1/latency_timer'
 
 ---
 
-### Step 8: Mujoco Simulation Mode (in Docker Container)
+### Step 8: Mujoco Simulation MIA Hand and Wrist Motor Execution (in Docker Container)
 
 XLaunch configuration:
 - Multiple windows
@@ -308,8 +308,10 @@ XLaunch configuration:
 
 **Terminal 1:**
 
+Run the MuJoCo MIA Hand simulation:
+
 ```bash
-export DISPLAY=ip:0.0
+export DISPLAY=ip4_address:0.0
 source /ros2_ws/install/setup.bash
 
 ros2 launch mia_hand_mujoco mia_hand_system_interface_launch.py
@@ -317,19 +319,23 @@ ros2 launch mia_hand_mujoco mia_hand_system_interface_launch.py
 
 **Terminal 2:**
 
+Run the ROS2 node to control the MIA Hand in MuJoCo simulation:
+
 ```bash
-export DISPLAY=ip:0.0
+export DISPLAY=ip4_address:0.0
 source /ros2_ws/install/setup.bash
 
-chmod +x mia_hand_grasp_control_simulation.py
-python3 mia_hand_grasp_control_simulation.py
+chmod +x mia_hand_full_simulation.py
+python3 mia_hand_full_simulation.py
 ```
 
 ---
 
-### Step 9: Physical MIA Hand Execution (in Docker Container)
+### Step 9: Physical MIA Hand and Wrist Motor Execution (in Docker Container)
 
 **Terminal 1:**
+
+Run the MIA Hand driver to have access to it:
 
 ```bash
 source /ros2_ws/install/setup.bash
@@ -339,22 +345,26 @@ ros2 launch mia_hand_driver mia_hand_driver_launch.py serial_port:=/dev/ttyUSB0
 
 **Terminal 2:**
 
+Run the ROS2 node to control with the EMG gestures the physical MIA Hand and its Wrist motor:
+
 ```bash
 source /ros2_ws/install/setup.bash
 
-chmod +x mia_hand_grasp_control_physical.py
-python3 mia_hand_grasp_control_physical.py
+chmod +x mia_hand_full_physical.py
+python3 mia_hand_full_physical.py
 ```
 
 ---
 
 ### Step 10: VS Code (in Docker Container)
 
+Example:
+
 ```bash
-code mia_hand_grasp_control_physical.py
+code mia_hand_full_physical.py
 ```
 
-This allows direct editing of ROS2 control scripts inside the container.
+This allows direct editing of ROS2 scripts, inside the container, in VS Code environment.
 
 ---
 
@@ -365,8 +375,8 @@ This allows direct editing of ROS2 control scripts inside the container.
 - Semi-autonomous AI-assisted control
 
 ### AI Evaluation
-- Lightweight vs heavy vision models
-- Local vs cloud inference systems
+- Lightweight vs heavy Vision models
+- Local vs cloud Vision models
 
 ### Metrics
 - Latency (100–400 ms real-time constraint)
