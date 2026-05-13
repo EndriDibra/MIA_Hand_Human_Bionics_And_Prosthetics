@@ -384,13 +384,13 @@ This allows direct editing of ROS2 scripts, inside the container, in VS Code env
 
 ### Requirements
 
--Python >=3.7 and <3.11.
--Libraries:
-  -`tensorflow==2.12.0`
-  -`scikit-learn`
-  -`opencv-python`
-  -`numpy`
-  -`mindrove` (MindRove SDK)
+- Python >=3.7 and <3.11.
+- Libraries:
+  - `tensorflow==2.12.0`
+  - `scikit-learn`
+  - `opencv-python`
+  - `numpy`
+  - `mindrove` (MindRove SDK)
 
 ### Step 1: Install the MindRove package to control the EMG device (VS CODE, in Windows)
 
