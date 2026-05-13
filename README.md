@@ -308,7 +308,7 @@ XLaunch configuration:
 
 **Terminal 1:**
 
-Check the ip4 address of the devise (host, in Windows):
+Check the ip4 address of the device (host, in Windows):
 
 ```bash
 ipconfig
