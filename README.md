@@ -23,7 +23,7 @@ The project is not yet finalized and focuses on real-time robotic grasping, huma
 
 ---
 
-<h2 align="center">MIA Hand MuJoCo Simulation</h2>
+<h2 align="center">MIA Hand Simple MuJoCo Simulation</h2>
 
 https://github.com/user-attachments/assets/cf530741-d14d-4f3f-a56a-b2b21c569f8f
 
