@@ -82,7 +82,7 @@ https://github.com/user-attachments/assets/cf530741-d14d-4f3f-a56a-b2b21c569f8f
 
 ---
 
-## Setup Instructions for MIA Hand and Wrist Motor
+## Setup Instructions for MIA Hand and Wrist Motor (Python based)
 
 ### Step 1: Open WSL Ubuntu (in PowerShell)
 
@@ -380,8 +380,61 @@ This allows direct editing of ROS2 scripts, inside the container, in VS Code env
 
 ---
 
-## Setup Instructions for MindRove EMG and NaviFlame AI
+## Setup Instructions for MindRove EMG and NaviFlame AI (Python based)
 
+### Requirements
+
+-Python >=3.7 and <3.11.
+-Libraries:
+  -`tensorflow==2.12.0`
+  -`scikit-learn`
+  -`opencv-python`
+  -`numpy`
+  -`mindrove` (MindRove SDK)
+
+### Step 1: Install the MindRove package to control the EMG device (VS CODE, in Windows)
+
+Run the fllowing command to install the package:
+
+```bash
+pip install mindrove
+```
+---
+
+### Step 2: Install the MindRove package to control the EMG device (VS CODE, in Windows)
+
+Run the fllowing command to install the package:
+
+```bash
+pip install mindrove
+```
+---
+
+### Step 3: Install the MindRove package to control the EMG device (VS CODE, in Windows)
+
+Run the fllowing command to install the package:
+
+```bash
+pip install mindrove
+```
+---
+
+### Step 4: Install the MindRove package to control the EMG device (VS CODE, in Windows)
+
+Run the fllowing command to install the package:
+
+```bash
+pip install mindrove
+```
+---
+
+### Step 5: Install the MindRove package to control the EMG device (VS CODE, in Windows)
+
+Run the fllowing command to install the package:
+
+```bash
+pip install mindrove
+```
 ---
 
 ## Experimental Research Focus
