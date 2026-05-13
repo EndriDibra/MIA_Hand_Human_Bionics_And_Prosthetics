@@ -82,7 +82,7 @@ https://github.com/user-attachments/assets/cf530741-d14d-4f3f-a56a-b2b21c569f8f
 
 ---
 
-## Setup Instructions
+## Setup Instructions for MIA Hand and Wrist Motor
 
 ### Step 1: Open WSL Ubuntu (in PowerShell)
 
@@ -377,6 +377,10 @@ code mia_hand_full_physical.py
 ```
 
 This allows direct editing of ROS2 scripts, inside the container, in VS Code environment.
+
+---
+
+## Setup Instructions for MindRove EMG and NaviFlame AI
 
 ---
 
