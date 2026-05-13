@@ -5,15 +5,19 @@
 
 ## Project Status
 
-This is an **ongoing research and development project** involving the **Prensilia MIA Hand robotic system**, integrated with ROS 2, Docker, EMG control, and AI-based vision assistance.
+This is an **ongoing research and development project** involving the **Prensilia MIA Hand robotic system**, integrated with ROS 2, Docker, EMG control, Wrist motor control and AI-based vision assistance.
 
 The project is not yet finalized and focuses on real-time robotic grasping, human-machine interaction, and explainable AI integration.
+
+<h2 align="center">MIA Hand</h2>
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/8ae28d1e-3fe1-4203-b6c6-202ed537e6b1" width="350" title="MIA Hand">
 </p>
 
 ---
+
+<h2 align="center">MIA Hand MuJoCo Simulation</h2>
 
 https://github.com/user-attachments/assets/cf530741-d14d-4f3f-a56a-b2b21c569f8f
 
