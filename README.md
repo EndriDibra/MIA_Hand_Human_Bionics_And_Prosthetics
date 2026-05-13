@@ -33,10 +33,13 @@ https://github.com/user-attachments/assets/cf530741-d14d-4f3f-a56a-b2b21c569f8f
 
 ### Core Objectives
 - Achieve real-time system performance (**100 ms – 400 ms latency**)
-- Execute **5 different grasp types**
+- Execute **3 different grasp types**:
+  - Cylindrical
+  - Pinch
+  - Lateral
 - Compare two control paradigms:
-  - Traditional system: MIA Hand + Wrist + Myo EMG
-  - Semi-autonomous system: MIA Hand + Wrist + EMG + AI Vision
+  - Traditional system: MIA Hand + Wrist + MindRove EMG
+  - Semi-autonomous system: MIA Hand + Wrist + EMG + AI Vision + XAI
 
 ---
 
@@ -44,7 +47,7 @@ https://github.com/user-attachments/assets/cf530741-d14d-4f3f-a56a-b2b21c569f8f
 - Integrate AI vision for grasp decision support
 - Compare:
   - Lightweight vs heavy vision models
-  - Local vs cloud AI inference
+  - Local vs cloud Vision models
 - Enable dynamic grasp aperture adjustment
 
 ---
@@ -56,8 +59,8 @@ https://github.com/user-attachments/assets/cf530741-d14d-4f3f-a56a-b2b21c569f8f
   - Cognitive burden on user
 - Benchmark different AI-assisted grasping strategies
 - Apply Explainable AI:
-  - **SHAP** → feature importance (sensor/EMG data)
-  - **LIME** → vision-based explanation
+  - **SHAP** → Feature importance (sensor/EMG data)
+  - **LIME** → Vision-based explanation
 
 ---
 
@@ -65,22 +68,21 @@ https://github.com/user-attachments/assets/cf530741-d14d-4f3f-a56a-b2b21c569f8f
 
 ### Hardware
 - MIA Hand (Prensilia)
-- Myo EMG armband
+- MindRove EMG armband
 - Wrist control system
-- USB serial interface (`ttyUSB0`)
+- USB serial interface (`ttyUSB0`, `ttyUSB1` )
 
 ### Software
-- ROS 2
+- ROS 2 (Jazzy)
+- Linux (Ubuntu)
 - Docker container environment
 - Python control scripts
-- Mujoco simulation
-- OpenCV + AI models
+- MuJoCo simulation
+- OpenCV + AI models (YOLO)
 
 ---
 
 ## Setup Instructions
-
----
 
 ### Step 1: Open WSL Ubuntu (in PowerShell)
 
