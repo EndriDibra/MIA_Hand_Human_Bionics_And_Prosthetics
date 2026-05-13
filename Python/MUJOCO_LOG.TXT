@@ -1,0 +1,22 @@
+Wed Apr 15 10:57:42 2026
+ERROR: Load model error: XML Error: Schema violation: unrecognized attribute: 'inheritrange'
+
+Element 'position', line 0
+
+
+Wed Apr 15 10:59:00 2026
+ERROR: Load model error: XML Error: unknown plugin 'mujoco.mia_hand.index_thumb_actuator'
+Element 'plugin', line 0
+
+
+Wed Apr 15 11:02:00 2026
+ERROR: Load model error: XML Error: unknown plugin 'mujoco.mia_hand.index_thumb_actuator'
+Element 'plugin', line 0
+
+
+Wed Apr 15 11:04:16 2026
+ERROR: Could not initialize GLFW
+
+Wed Apr 15 11:19:34 2026
+ERROR: could not initialize GLFW
+
