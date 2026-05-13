@@ -235,7 +235,7 @@ usbipd attach --wsl --busid <BUSID1> <BUSID2>
 
 ---
 
-### Step 6: Start the Docker Container (in Ubuntu)
+### Step 6: Start the Docker Container (For the next time, in Ubuntu)
 
 Check containers:
 
