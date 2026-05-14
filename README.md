@@ -15,17 +15,26 @@ The project is not yet finalized and focuses on real-time robotic grasping, huma
   <img src="https://github.com/user-attachments/assets/8ae28d1e-3fe1-4203-b6c6-202ed537e6b1" width="350" title="MIA Hand">
 </p>
 
+- **This is MIA Hand, with the Wrist Motor and the Depth Camera**
+- **This Robotic System is used for this Project and Experiments**
+
 ---
 
 <h2 align="center">MindRove EMG Data</h2>
 
 <img width="959" height="503" alt="EMG_Data" src="https://github.com/user-attachments/assets/449a70a4-7f0f-43e9-8328-6335b916b6b9" />
 
+- **These are the 8 EMG signal channels, representing my right hand muscles activity**
+- **The data from the EMG signals are used to train, fine-tune NaviFlame AI, for predicting my gestures**
+
 ---
 
 <h2 align="center">MIA Hand Simple MuJoCo Simulation</h2>
 
 https://github.com/user-attachments/assets/cf530741-d14d-4f3f-a56a-b2b21c569f8f
+
+- **At this setup i am using the keys from the keyboard to control the MIA Hand and Wrist Motor**
+- **The simulation is on MuJoCo environment**
 
 ---
 
