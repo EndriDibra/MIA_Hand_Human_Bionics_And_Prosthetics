@@ -33,7 +33,7 @@ The project is not yet finalized and focuses on real-time robotic grasping, huma
 
 https://github.com/user-attachments/assets/cf530741-d14d-4f3f-a56a-b2b21c569f8f
 
-- **At this setup i am using the keys from the keyboard to control the MIA Hand and Wrist Motor**
+- **At this setup i am using the keys from the keyboard to control MIA Hand**
 - **The simulation is on MuJoCo environment**
 
 ---
