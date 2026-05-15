@@ -242,13 +242,15 @@ usbipd list
 Bind the MIA Hand and Wrist motor USB ports:
 
 ```bash
-usbipd bind --busid <BUSID1> <BUSID2>
+usbipd bind --busid <BUSID1>
+usbipd bind --busid <BUSID2>
 ```
 
 Attach the MIA Hand and Wrist motor USB ports to WSL2 environment:
 
 ```bash
-usbipd attach --wsl --busid <BUSID1> <BUSID2>
+usbipd attach --wsl --busid <BUSID1>
+usbipd attach --wsl --busid <BUSID2>
 ```
 
 ---
