@@ -406,18 +406,50 @@ This allows direct editing of ROS2 scripts, inside the container, in VS Code env
 
 - Gesture ID `0`: Hand is relaxed:
   - MIA Hand `Opens`
+
+<img width="3024" height="4032" alt="g0" src="https://github.com/user-attachments/assets/da0f6fdc-b5ad-44fa-a7e0-d54711762c0c" />
+
+---
+
 - Gesture ID `1`: Thumb is up:
   - MIA Hand rotates in the `Middle`
+
+<img width="3024" height="4032" alt="g1" src="https://github.com/user-attachments/assets/1ec9eecd-f8da-4413-8c90-eba1b2a37c46" />
+
+---
+
 - Gesture ID `2`: Index and Middle finger are up:
   - MIA Hand performs the `Lateral grasp`  
+
+<img width="3024" height="4032" alt="g2" src="https://github.com/user-attachments/assets/9e538c6f-6e0f-4aee-9ebe-b1ca58a5b617" />
+
+---
+
 - Gesture ID `3`: All fingers are closed and tight:
-  - MIA Hand perform the `Cylindrical` or `Full` grasp 
+  - MIA Hand perform the `Cylindrical` or `Full` grasp
+
+<img width="3024" height="4032" alt="g3" src="https://github.com/user-attachments/assets/e7f0ec52-7321-4759-a786-20b20ae7076e" />
+
+---
+
 - Gesture ID `4`: Index finger is up:
   - MIA Hand performs `Pinch` or `Precision` grasp 
+
+<img width="3024" height="4032" alt="g4" src="https://github.com/user-attachments/assets/ef5c385f-3cff-460c-8846-c1a87f527ef8" />
+
+---
+
 - Gesture ID `5`: Wrist flexion upwards:
   - MIA Hand rotates on the `Left` side 
+
+<img width="3024" height="4032" alt="g5" src="https://github.com/user-attachments/assets/c9d09ead-46b5-4265-9e57-771484e6f43a" />
+
+---
+
 - Gesture ID `6`: Wrist flexion downwards:
   - MIA Hand rotates on the `Right` side   
+
+<img width="3024" height="4032" alt="g6" src="https://github.com/user-attachments/assets/b1751e00-e7fd-40b3-a1a3-fe32babbdced" />
 
 ---
 
