@@ -404,19 +404,19 @@ This allows direct editing of ROS2 scripts, inside the container, in VS Code env
 
 ### EMG Gestures to Control MIA Hand and Wrist motor
 
-- Gesture ID 0: Hand is relaxed:
+- Gesture ID `0`: Hand is relaxed:
   - MIA Hand `Opens`
-- Gesture ID 1: Thumb is up:
+- Gesture ID `1`: Thumb is up:
   - MIA Hand rotates in the `Middle`
-- Gesture ID 2: Index and Middle finger are up:
+- Gesture ID `2`: Index and Middle finger are up:
   - MIA Hand performs the `Lateral grasp`  
-- Gesture ID 3: All fingers are closed and tight:
+- Gesture ID `3`: All fingers are closed and tight:
   - MIA Hand perform the `Cylindrical` or `Full` grasp 
-- Gesture ID 4: Index finger is up:
+- Gesture ID `4`: Index finger is up:
   - MIA Hand performs `Pinch` or `Precision` grasp 
-- Gesture ID 5: Wrist flexion upwards:
+- Gesture ID `5`: Wrist flexion upwards:
   - MIA Hand rotates on the `Left` side 
-- Gesture ID 6: Wrist flexion downwards:
+- Gesture ID `6`: Wrist flexion downwards:
   - MIA Hand rotates on the `Right` side   
 
 ---
