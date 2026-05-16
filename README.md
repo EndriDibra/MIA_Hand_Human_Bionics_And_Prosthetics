@@ -407,8 +407,9 @@ This allows direct editing of ROS2 scripts, inside the container, in VS Code env
 - Gesture ID `0`: Hand is relaxed:
   - MIA Hand `Opens`
 
-<img width="250" height="250" alt="g0" src="https://github.com/user-attachments/assets/da0f6fdc-b5ad-44fa-a7e0-d54711762c0c" />
-
+<p align="center">
+  <img width="250" height="250" alt="g0" src="https://github.com/user-attachments/assets/da0f6fdc-b5ad-44fa-a7e0-d54711762c0c" />
+</p>
 ---
 
 - Gesture ID `1`: Thumb is up:
