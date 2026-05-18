@@ -50,7 +50,7 @@ https://github.com/user-attachments/assets/219e9298-0da8-4f9e-9323-c59ad1b8cabf
 <h2 align="center">MIA Hand EMG Control Physical</h2>
 
 - **The link below has the video with the implementation involving the Physical Robotic MIA Hand**
-- https://www.youtube.com/watch?v=cOJNRXLjfJY
+- https://www.youtube.com/watch?v=SKP5CYs-0fs
 
 ---
 
