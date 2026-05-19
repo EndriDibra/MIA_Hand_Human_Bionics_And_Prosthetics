@@ -622,7 +622,7 @@ Finally, to start and run the implementation, do the following:
 ### EMG Gestures to Control MIA Hand
 
 - Gesture ID `0`: Hand is relaxed:
-  - MIA Hand return to its default position, thus, in the middle and with the hand open
+  - MIA Hand returns to its default position, thus, in the middle and with the hand open
 
 <p align="center">
   <img width="250" height="250" alt="g0" src="https://github.com/user-attachments/assets/da0f6fdc-b5ad-44fa-a7e0-d54711762c0c" />
@@ -678,7 +678,7 @@ usbipd attach --wsl --busid <BUSID>
 ```
 ---
 
-### Step 2: Run the Base Script for Depth Camera Stream
+### Step 2: Run the Base Script for Depth Camera Stream (in Docker Container)
 
 Run this script to verify and see the depth info stream:
 
@@ -698,7 +698,7 @@ python3 depthCamera.py
 
 ---
 
-### Step 3: Run the Object Detector Script with Depth Camera Stream
+### Step 3: Run the Object Detector Script with Depth Camera Stream (in Docker Container)
 
 Run this script to detect objects around the scene and check the depth info stream too:
 
@@ -717,7 +717,20 @@ python3 depthCameraYolo.py
 
 ---
 
-### Step 4: Run the Voice Technology Script to Control the System and MIA Hand 
+### Step 4: Run the Main AI Sript to Perform a Semi-Autonomous Approach (in Docker Container)
+
+- Here the AI Camera will detect the object after the voice commands
+- Then, it will predefine the grasp and the rotation type for that specific object
+- And lastly, will wait for the execution EMG gesture command from the user, to close the hand and grasp the object
+- After that, you can repeat the process by saying again a phrase that includes the words: go, start, begin 
+
+```bash
+python3 mia_hand_full_ai_physical.py
+```
+
+---
+
+### Step 5: Run the Voice Technology Script to Control the System and MIA Hand (in Windows)
 
 - Now you can start the system by saying, a command phrase that includes the words: start, go, begin
 - Then, the system will respond to you that it has started successfully
@@ -730,16 +743,13 @@ python3 voiceTechnology.py
 
 ---
 
-### Step 5: Run the Main AI Sript to Perform a Semi-Autonomous Approach
+### Step 6: Final Stage
 
-- Here the AI Camera will detect the object after the voice commands
-- Then, it will predefine the grasp and the rotation type for that specific object
-- And lastly, will wait for the execution EMG gesture command from the user, to close the hand and grasp the object
-- After that, you can repeat the process by saying again a phrase that includes the words: go, start, begin 
-
-```bash
-python3 mia_hand_full_ai_physical.py
-```
+So, to perform the Semi-Autonomous approach:
+- Run the MIA Hand Driver (`ros2 launch mia_hand_driver mia_hand_driver_launch.py serial_port:=/dev/ttyUSB0`)
+- Run the MIA Hand ROS2 node (`mia_hand_full_ai_physical.py`)
+- Run the Voice Technology script (`voiceTechnology.py`)
+- Run the inference script (`inference_example.py`)
 
 ---
 
