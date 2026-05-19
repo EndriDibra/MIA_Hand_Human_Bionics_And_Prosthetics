@@ -486,6 +486,8 @@ This allows direct editing of ROS2 scripts, inside the container, in VS Code env
   - `opencv-python`
   - `numpy`
   - `mindrove` (MindRove SDK)
+ 
+---
 
 ### Step 1: Clone the Naviflame GitHub Repository (VS CODE, in Windows)
 
@@ -612,6 +614,132 @@ Finally, to start and run the implementation, do the following:
 - Run the inference script (`inference_example.py`)
 - Perform EMG gestures with the MindRove Armband
 - Now MIA Hand moves according to the EMG gestures
+
+---
+
+## Setup Instructions for the Semi-Autonomous Level (Python based)
+
+### EMG Gestures to Control MIA Hand
+
+- Gesture ID `0`: Hand is relaxed:
+  - MIA Hand return to its default position, thus, in the middle and with the hand open
+
+<p align="center">
+  <img width="250" height="250" alt="g0" src="https://github.com/user-attachments/assets/da0f6fdc-b5ad-44fa-a7e0-d54711762c0c" />
+</p>
+
+---
+
+- Gesture ID `2`: Index and Middle finger are up:
+  - MIA Hand performs the execution command, to close the hand/grasp  
+
+<p align="center">
+  <img width="250" height="250" alt="g2" src="https://github.com/user-attachments/assets/9e538c6f-6e0f-4aee-9ebe-b1ca58a5b617" />
+</p>
+
+---
+
+### Requirements
+
+- Python >=3.7 and <3.11.
+- Libraries:
+  - `pyrealsense2`
+  - `ultralytics`
+  - `opencv-python`
+  - `numpy`
+- `yolo11n.pt` model weights
+
+---
+
+### Step 1: Depth Camera USB Setup - WSL Integration (in PoweShell Admin)
+
+**The Depth Camera used for this projects is the Intel RealSense D-405**
+
+Connect device:
+- Plug the Depth Camera with a type 3.0 USB cable into PC
+- Set latency timer = 1 in Windows Device Manager
+
+Check the list of the USB ports:
+
+```bash
+usbipd list
+```
+
+Bind the Depth Camera USB port:
+
+```bash
+usbipd bind --busid <BUSID>
+```
+
+Attach the Depth Camera USB port to WSL2 environment:
+
+```bash
+usbipd attach --wsl --busid <BUSID>
+```
+---
+
+### Step 2: Run the Base Script for Depth Camera Stream
+
+Run this script to verify and see the depth info stream:
+
+```bash
+python3 depthCamera.py
+```
+
+<p align="center">
+  <table>
+    <tr>
+      <td><img src= "https://github.com/user-attachments/assets/d10da4fd-ebd3-4fdd-a3cd-1f61d2745703" width="300" title="Robot View 2"></td>
+      <td><img src="https://github.com/user-attachments/assets/6e12f257-3cf8-4479-a024-15d3d9707d13" width="300" title="Robot View 1"></td>
+      <td><img src="https://github.com/user-attachments/assets/c779c125-ea1e-4594-9f67-f3fdfb232cfd" width="300" title="Robot View 3"></td>
+    </tr>
+  </table>
+</p>
+
+---
+
+### Step 3: Run the Object Detector Script with Depth Camera Stream
+
+Run this script to detect objects around the scene and check the depth info stream too:
+
+```bash
+python3 depthCameraYolo.py
+```
+
+<p align="center">
+  <table>
+    <tr>
+      <td><img src= "https://github.com/user-attachments/assets/0b5c40c4-0cde-4651-9e4a-3c86acb73e6a" width="300" title="Robot View 2"></td>
+      <td><img src="https://github.com/user-attachments/assets/39484ae7-8709-4153-bd68-0cd0907121a3" width="300" title="Robot View 1"></td>
+    </tr>
+  </table>
+</p>
+
+---
+
+### Step 4: Run the Voice Technology Script to Control the System and MIA Hand 
+
+- Now you can start the system by saying, a command phrase that includes the words: start, go, begin
+- Then, the system will respond to you that it has started successfully
+- It will ask you about what object it should search for
+- After that, you just say the name of the object, e.g. bottle
+
+```bash
+python3 voiceTechnology.py
+```
+
+---
+
+### Step 5: Run the Main AI Sript to Perform a Semi-Autonomous Approach
+
+- Here the AI Camera will detect the object after the voice commands
+- Then, it will predefine the grasp and the rotation type for that specific object
+- And lastly, will wait for the execution EMG gesture command from the user, to close the hand and grasp the object
+- After that, you can repeat the process by saying again a phrase that includes the words: go, start, begin 
+
+```bash
+python3 mia_hand_full_ai_physical.py
+```
 
 ---
 
