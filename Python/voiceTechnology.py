@@ -3,7 +3,8 @@
 # Project: Voice Controlled ROS 2 Pipeline Interface
 
 # Description: Host speech recognition bridge forwarding
-# wake words and target objects to a Docker container via TCP sockets
+# wake up words and target objects to a Docker container via TCP sockets
+# with interactive two-way voice-to-text and text-to-voice interfaces
 
 # Importing socket library
 # for network communication
@@ -12,6 +13,10 @@ import socket
 # Importing speech recognition
 # library for audio processing
 import speech_recognition as sr 
+
+# Importing text to speech
+# library for verbal system responses
+import pyttsx3
 
 # Importing time library
 # for managing execution delays
@@ -25,6 +30,30 @@ HOST_IP = '127.0.0.1'
 # Setting the target port
 # number for socket connection
 PORT = 5001
+
+# Initializing the text to
+# speech synthesis subsystem engine
+engine = pyttsx3.init()
+
+# Setting the vocal delivery
+# speech rate to a natural cadence
+engine.setProperty('rate', 165)
+
+# Formatting system status output
+# into local audio speaker broadcasts
+def speak(text):
+
+    # Printing the textual copy
+    # of the spoken message out
+    print(f"[System Voice]: {text}")
+
+    # Queueing the string message
+    # for vocal track rendering
+    engine.say(text)
+
+    # Executing the speech tasks
+    # blocking execution until completed
+    engine.runAndWait()
 
 # Processing the message
 # delivery to the Docker container
@@ -92,6 +121,10 @@ def main():
     # within the downstream vision node
     VALID_OBJECTS = {'bottle', 'cup'}
 
+    # Defining terms used to trigger
+    # a clean interface shutdown
+    EXIT_WORDS = {'exit', 'stop', 'quit'}
+
     # Monitoring the acoustic space
     # within an infinite loop
     while True:
@@ -107,7 +140,7 @@ def main():
             # based on ambient environment samples
             recognizer.adjust_for_ambient_noise(source, duration=1.0)
             
-            print("Ready! Say an activation phrase (e.g., 'go system', 'start the system')...")
+            print("Ready! Say an activation phrase (e.g., 'go system', 'start the system') or 'exit'...")
 
             # Monitoring microphone input
             # streams for wake token matching
@@ -147,6 +180,16 @@ def main():
                 # restart calibration steps
                 continue
 
+        # Checking if an exit command was spoken during Phase 1
+        if any(word in text for word in EXIT_WORDS):
+
+            # Announcing terminal system closing response
+            speak("Good bye!")
+
+            # Breaking the operation loop
+            # terminating the application cleanly
+            break
+
         # Checking if any monitored wake up phrase tokens exist inside the text
         if not any(word in text for word in WAKE_WORDS):
 
@@ -156,7 +199,10 @@ def main():
             # to ambient noise checking blocks
             continue
 
-        print("Keyword recognized! Sending 'go' activation signal to ROS2 container...")
+        # Announcing interactive conversational response for system startup
+        speak("Hello, how are you? Starting the system!")
+
+        print("Sending 'go' activation signal to ROS2 container...")
 
         # Transmitting the standardized
         # activation command across the socket
@@ -194,6 +240,15 @@ def main():
                 target_phrase = recognizer.recognize_google(audio_target).lower().strip()
 
                 print(f"Captured Target Text: '{target_phrase}'")
+
+                # Checking if an exit command was spoken during Phase 2
+                if any(word in target_phrase for word in EXIT_WORDS):
+
+                    # Announcing terminal system closing response
+                    speak("Good bye!")
+
+                    # Terminating the loop structure
+                    break
                 
                 # Initializing the container to
                 # hold the filtered target token
@@ -219,7 +274,10 @@ def main():
                 # target was extracted
                 if found_target:
 
-                    print(f"Target extracted: '{found_target.upper()}'. Forwarding to ROS2...")
+                    # Announcing interactive conversational status for object assignment
+                    speak(f"I am going to send the object: {found_target}")
+
+                    print("Forwarding target object to ROS2...")
 
                     # Pushing the isolated object label
                     # across the TCP socket pipeline
@@ -228,6 +286,9 @@ def main():
                     # Delaying execution to
                     # provide an interface rest window
                     time.sleep(2.0) 
+
+                    # Announcing interactive conversational response before loop reset
+                    speak("Of course! Restarting the system.")
 
                 # Handling cases where speech content
                 # contains invalid object names
@@ -254,6 +315,12 @@ def main():
                 # Printing generic description
                 # logs tracking the phase fault
                 print(f"Error capturing target phase: {e}")
+
+        # Checking if an exit request broke the inner targeting statement blocks
+        if any(word in target_phrase for word in EXIT_WORDS if 'target_phrase' in locals()):
+
+            # Terminating the application loop completely
+            break
 
 
 # Direct script execution
