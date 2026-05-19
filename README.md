@@ -678,7 +678,7 @@ usbipd attach --wsl --busid <BUSID>
 ```
 ---
 
-### Step 2: Run the Base Script for Depth Camera Stream (in Docker Container)
+### Step 2 (Optional): Run the Base Script for Depth Camera Stream (in Docker Container)
 
 Run this script to verify and see the depth info stream:
 
@@ -700,7 +700,7 @@ python3 depthCamera.py
 
 ---
 
-### Step 3: Run the Object Detector Script with Depth Camera Stream (in Docker Container)
+### Step 3 (Optional): Run the Object Detector Script with Depth Camera Stream (in Docker Container)
 
 Run this script to detect objects around the scene and check the depth info stream too:
 
