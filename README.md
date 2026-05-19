@@ -700,9 +700,9 @@ python3 depthCamera.py
 
 <table align="center">
     <tr>
-      <td><img src= "https://github.com/user-attachments/assets/d10da4fd-ebd3-4fdd-a3cd-1f61d2745703" width="400" title="Robot View 2"></td>
-      <td><img src="https://github.com/user-attachments/assets/6e12f257-3cf8-4479-a024-15d3d9707d13" width="400" title="Robot View 1"></td>
-      <td><img src="https://github.com/user-attachments/assets/c779c125-ea1e-4594-9f67-f3fdfb232cfd" width="400" title="Robot View 3"></td>
+      <td><img src= "https://github.com/user-attachments/assets/d10da4fd-ebd3-4fdd-a3cd-1f61d2745703" width="300" title="Robot View 2"></td>
+      <td><img src="https://github.com/user-attachments/assets/6e12f257-3cf8-4479-a024-15d3d9707d13" width="300" title="Robot View 1"></td>
+      <td><img src="https://github.com/user-attachments/assets/c779c125-ea1e-4594-9f67-f3fdfb232cfd" width="300" title="Robot View 3"></td>
     </tr>
 </table>
 
@@ -721,8 +721,8 @@ python3 depthCameraYolo.py
 
 <table align="center">
   <tr>
-    <td><img src="https://github.com/user-attachments/assets/0b5c40c4-0cde-4651-9e4a-3c86acb73e6a" width="400" title="Robot View 2"></td>
-    <td><img src="https://github.com/user-attachments/assets/39484ae7-8709-4153-bd68-0cd0907121a3" width="400" title="Robot View 1"></td>
+    <td><img src="https://github.com/user-attachments/assets/0b5c40c4-0cde-4651-9e4a-3c86acb73e6a" width="300" title="Robot View 2"></td>
+    <td><img src="https://github.com/user-attachments/assets/39484ae7-8709-4153-bd68-0cd0907121a3" width="300" title="Robot View 1"></td>
   </tr>
 </table>
 
