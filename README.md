@@ -686,15 +686,13 @@ Run this script to verify and see the depth info stream:
 python3 depthCamera.py
 ```
 
-<p align="center">
-  <table>
+<table align="center">
     <tr>
       <td><img src= "https://github.com/user-attachments/assets/d10da4fd-ebd3-4fdd-a3cd-1f61d2745703" width="300" title="Robot View 2"></td>
       <td><img src="https://github.com/user-attachments/assets/6e12f257-3cf8-4479-a024-15d3d9707d13" width="300" title="Robot View 1"></td>
       <td><img src="https://github.com/user-attachments/assets/c779c125-ea1e-4594-9f67-f3fdfb232cfd" width="300" title="Robot View 3"></td>
     </tr>
-  </table>
-</p>
+</table>
 
 ---
 
