@@ -647,12 +647,14 @@ Finally, to start and run the implementation, do the following:
   - `ultralytics`
   - `opencv-python`
   - `numpy`
+  - `pyttsx3`
+  - `speech_recognition`
 - `yolo11n.pt` model weights
 
 Install the libraries with this command:
 
 ```bash
-pip install pyrealsense2 ultralytics opencv-python numpy
+pip install pyrealsense2 ultralytics opencv-python numpy pyttsx3 speech_recognition
 ```
 
 ---
