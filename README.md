@@ -367,8 +367,8 @@ Run the ROS2 node to control the MIA Hand in MuJoCo simulation:
 export DISPLAY=ip4_address:0.0
 source /ros2_ws/install/setup.bash
 
-chmod +x mia_hand_full_simulation.py
-python3 mia_hand_full_simulation.py
+chmod +x mia_hand_advanced_simulation.py
+python3 mia_hand_advanced_simulation.py
 ```
 
 ---
@@ -392,8 +392,8 @@ Run the ROS2 node to control with the EMG gestures the physical MIA Hand and its
 ```bash
 source /ros2_ws/install/setup.bash
 
-chmod +x mia_hand_full_physical.py
-python3 mia_hand_full_physical.py
+chmod +x mia_hand_EMG_physical.py
+python3 mia_hand_EMG_physical.py
 ```
 
 ---
@@ -403,7 +403,7 @@ python3 mia_hand_full_physical.py
 Example:
 
 ```bash
-code mia_hand_full_physical.py
+code mia_hand_EMG_physical.py
 ```
 
 This allows direct editing of ROS2 scripts, inside the container, in VS Code environment.
