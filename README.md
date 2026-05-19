@@ -610,7 +610,7 @@ def send_output_to_socket(stop_event, output_queue):
 Finally, to start and run the implementation, do the following:
 
 - Run the MIA Hand Driver (`ros2 launch mia_hand_driver mia_hand_driver_launch.py serial_port:=/dev/ttyUSB0`)
-- Run the MIA Hand ROS2 node (`mia_hand_full_physical.py`)
+- Run the MIA Hand ROS2 node (`mia_hand_EMG_physical.py`)
 - Run the inference script (`inference_example.py`)
 - Perform EMG gestures with the MindRove Armband
 - Now MIA Hand moves according to the EMG gestures
