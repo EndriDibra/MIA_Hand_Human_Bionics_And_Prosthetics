@@ -686,6 +686,10 @@ Run this script to verify and see the depth info stream:
 python3 depthCamera.py
 ```
 
+- As it is shown, the closest objects appear in blue color
+- Instead, the distant objects appear in red color
+- The objects that are out of the detection range of the depth camera appear in black color
+
 <table align="center">
     <tr>
       <td><img src= "https://github.com/user-attachments/assets/d10da4fd-ebd3-4fdd-a3cd-1f61d2745703" width="300" title="Robot View 2"></td>
@@ -703,6 +707,9 @@ Run this script to detect objects around the scene and check the depth info stre
 ```bash
 python3 depthCameraYolo.py
 ```
+
+- As it is shown, the closest objects appear in green/blue color
+- Instead, the distant objects appear in orange/red color
 
 <table align="center">
   <tr>
@@ -732,6 +739,7 @@ python3 mia_hand_full_ai_physical.py
 - Then, the system will respond to you that it has started successfully
 - It will ask you about what object it should search for
 - After that, you just say the name of the object, e.g. bottle
+- If there are more that one e.g bottles, it will focus to the one that is closer to the depth camera
 
 ```bash
 python3 voiceTechnology.py
