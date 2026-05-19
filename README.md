@@ -706,14 +706,12 @@ Run this script to detect objects around the scene and check the depth info stre
 python3 depthCameraYolo.py
 ```
 
-<p align="center">
-  <table>
-    <tr>
-      <td><img src= "https://github.com/user-attachments/assets/0b5c40c4-0cde-4651-9e4a-3c86acb73e6a" width="300" title="Robot View 2"></td>
-      <td><img src="https://github.com/user-attachments/assets/39484ae7-8709-4153-bd68-0cd0907121a3" width="300" title="Robot View 1"></td>
-    </tr>
-  </table>
-</p>
+<table align="center">
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/0b5c40c4-0cde-4651-9e4a-3c86acb73e6a" width="300" title="Robot View 2"></td>
+    <td><img src="https://github.com/user-attachments/assets/39484ae7-8709-4153-bd68-0cd0907121a3" width="300" title="Robot View 1"></td>
+  </tr>
+</table>
 
 ---
 
