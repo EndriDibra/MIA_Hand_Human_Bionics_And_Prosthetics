@@ -649,6 +649,12 @@ Finally, to start and run the implementation, do the following:
   - `numpy`
 - `yolo11n.pt` model weights
 
+Install the libraries with this command:
+
+```bash
+pip install pyrealsense2 ultralytics opencv-python numpy
+```
+
 ---
 
 ### Step 1: Depth Camera USB Setup - WSL Integration (in PoweShell Admin)
